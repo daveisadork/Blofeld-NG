@@ -1,0 +1,8 @@
+<div class="album-cover col-lg-2 col-md-3 col-xs-4" ng-repeat="album in albums | filter:searchText">
+  <a class="thumbnail" ng-href='#/album/{{album.title}}'>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////AAAAVcLTfgAAAAF0Uk5TAEDm2GYAAAAMSURBVHjaYmAACDAAAAIAAU9tWeEAAAAASUVORK5CYII="  class="img-responsive img-rounded" ng-style="getStyle(album.title)">
+    <div class="caption">
+      {{album.title}}
+    </div>
+  </a>
+</div>

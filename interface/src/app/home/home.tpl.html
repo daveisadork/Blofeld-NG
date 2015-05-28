@@ -1,0 +1,70 @@
+<!-- begin left column -->
+<div class="col-xs-3">
+  <div class="row">
+    <!-- begin artists -->
+    <div class="col-xs-12">
+      <div id="artists" class="panel panel-default">
+        <div class="panel-heading">
+          <strong>Artists</strong>
+        </div>
+        <div id="artists" class="list-group">
+          <div>
+            <a href ng-class="{'list-group-item': true, active: selected.artist == 'All Artists'}" ng-click="selectArtist('All Artists')">All Artists</a>
+          </div>
+          <div ng-repeat="artist in artists">
+            <a href ng-class="{'list-group-item': true, active: selected.artist == artist}" ng-click="selectArtist(artist)">{{artist}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end artists -->
+  </div>
+  <div class="row">
+    <!-- begin albums -->
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>Albums</strong>
+        </div>
+        <div id="albums" class="list-group">
+          <div>
+            <a href ng-class="{'list-group-item': true, active: selected.album == 'All Albums'}" ng-click="selectAlbum('All Albums')">All Albums</a>
+          </div>
+          <div ng-repeat="album in albums">
+            <a href ng-class="{'list-group-item': true, active: selected.album == album.title}" ng-click="selectAlbum(album.title)">
+              <span class="badge">{{album.totaltracks}}</span>
+              {{album.title}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end albums -->
+  </div>
+</div>
+<!-- end left column -->
+<!-- begin right column -->
+<div class="col-xs-9">
+  <div class="panel panel-default songs-container">
+    <table class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Artist</th>
+          <th>Album</th>
+          <th>Title</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody id="songs">
+        <tr ng-repeat="song in songs | filter:searchText">
+          <td><span ng-if="song.totaldiscs > 1">{{song.discnumber}}-</span>{{song.tracknumber}}</td>
+          <td>{{song.artist}}</td>
+          <td>{{song.album}}</td>
+          <td>{{song.title}}</td>
+          <td>{{song.date.substring(0, 4)}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
